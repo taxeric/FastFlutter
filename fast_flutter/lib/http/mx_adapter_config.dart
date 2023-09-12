@@ -1,1 +1,1 @@
-var base_host = "turtledove.com.cn:8080";
+var base_host = "";

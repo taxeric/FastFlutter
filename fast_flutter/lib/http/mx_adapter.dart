@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:fast_flutter/http/base_request.dart';
 import 'package:fast_flutter/http/req_helper.dart';
 
+import 'http_method.dart';
 import 'mx_error.dart';
 import 'mx_net_adapter.dart';
 
