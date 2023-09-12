@@ -21,12 +21,12 @@ class BaseRoute {
     ),
     GetPage(
       name: BaseRoute.settings,
-      page: () => SettingsPage(),
+      page: () => const SettingsPage(),
       binding: SettingsBinding(),
     ),
     GetPage(
       name: BaseRoute.spirit_details,
-      page: () => SpiritDetailsPage(),
+      page: () => const SpiritDetailsPage(),
       binding: SpiritDetailsBinding(),
     ),
   ];
