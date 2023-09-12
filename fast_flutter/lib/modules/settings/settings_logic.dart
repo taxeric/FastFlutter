@@ -1,7 +1,7 @@
-import 'package:fast_flutter/caches/preference_helper.dart';
-import 'package:fast_flutter/caches/preferences/preferences_config.dart';
 import 'package:get/get.dart';
 
+import '../../caches/preference/preferences_config.dart';
+import '../../caches/preference_helper.dart';
 import 'settings_state.dart';
 
 class SettingsLogic extends GetxController {
@@ -16,16 +16,27 @@ class SettingsLogic extends GetxController {
       state.requestHost.value = value;
     });
     PreferenceHelper
-    .getInt(PreferencesConfig.key_port)
-    .then((value) {
+        .getInt(PreferencesConfig.key_port)
+        .then((value) {
       state.requestPort.value = value;
     });
   }
 
   String buildRequestInfo() {
     if (state.requestHost.isEmpty) {
-      return "";
+      return "暂未设置";
     }
-    return "${state.requestHost.value}:${state.requestPort.value}";
+    var mHost = state.requestHost.value;
+    if (mHost.endsWith("/")) {
+      mHost = mHost.substring(0, mHost.length - 1);
+    }
+    return "$mHost:${state.requestPort.value}/";
+  }
+
+  void setRequestInfo(String host, int port) {
+    state.requestHost.value = host;
+    state.requestPort.value = port;
+    PreferenceHelper.put(PreferencesConfig.key_host, host);
+    PreferenceHelper.put(PreferencesConfig.key_port, port);
   }
 }
